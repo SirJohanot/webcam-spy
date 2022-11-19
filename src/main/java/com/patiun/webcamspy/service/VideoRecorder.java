@@ -40,7 +40,7 @@ public class VideoRecorder {
                     break;
                 }
                 BufferedImage image = webcam.getImage();
-                recorder.record(javaConverter.getFrame(image));
+                recorder.record(javaConverter.getFrame(image, 1.0, true));
                 try {
                     Thread.sleep(1000 / (long) fps);
                 } catch (InterruptedException ie) {
