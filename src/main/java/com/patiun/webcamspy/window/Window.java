@@ -18,7 +18,7 @@ import static com.patiun.webcamspy.factory.ComponentFactory.*;
 
 public class Window {
 
-    private static final int FPS = 15;
+    private static final int FPS = 10;
 
     public Window() {
         JFrame frame = buildFrame();
@@ -120,13 +120,14 @@ public class Window {
         spyButton.addActionListener(a -> {
             frame.setVisible(false);
             while (true) {
-                Thread recordingThread = VideoRecorder.recordVideo(webcam, webcamWidth, webcamHeight, FPS);
+//                Thread recordingThread = VideoRecorder.recordVideo(webcam, webcamWidth, webcamHeight, FPS);
+                PhotoCaptor.capturePhoto(webcam);
                 try {
-                    Thread.sleep(10000);
+                    Thread.sleep(5000);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                recordingThread.interrupt();
+//                recordingThread.interrupt();
             }
         });
         return spyButton;
